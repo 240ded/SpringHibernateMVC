@@ -1,10 +1,12 @@
 package web.config.service;
 
+import org.springframework.stereotype.Component;
 import web.model.Car;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class CarServiceImp implements CarService {
 
     @Override
