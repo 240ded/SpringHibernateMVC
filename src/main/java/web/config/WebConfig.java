@@ -1,25 +1,32 @@
 package web.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.thymeleaf.spring6.SpringTemplateEngine;
-import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
-import org.thymeleaf.spring6.view.ThymeleafViewResolver;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.thymeleaf.spring4.SpringTemplateEngine;
+import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
+import org.thymeleaf.spring4.view.ThymeleafViewResolver;
+
 
 @Configuration
 @EnableWebMvc
 @ComponentScan("web")
-public class WebConfig implements WebMvcConfigurer {
+public class WebConfig extends WebMvcConfigurerAdapter {
 
-    private final ApplicationContext applicationContext;
+    @Autowired
+    private ApplicationContext applicationContext;
 
     public WebConfig(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
+    }
+
+    public WebConfig() {
+
     }
 
 
