@@ -7,6 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Column;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 
 @Entity
@@ -19,15 +22,21 @@ public class User {
     private long id;
 
     @Column(name = "name", nullable = false)
+    @NotEmpty(message = "Name should not be empty")
+    @Size(min = 2, max = 30, message = "Name should be between 2 and 30 characters")
     private String name;
 
     @Column(name = "surname", nullable = false)
+    @NotEmpty(message = "Surname should not be empty")
+    @Size(min = 2, max = 30, message = "Surname should be between 2 and 30 characters")
     private String surname;
 
     @Column(name = "department", nullable = false)
+    @NotEmpty(message = "Department should not be empty")
     private String department;
 
     @Column(name = "salary", nullable = false)
+    @Min(value = 0, message = "Salary should be greater than 0")
     private int salary;
 
     public User() {
